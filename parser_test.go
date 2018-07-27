@@ -8,7 +8,7 @@ import (
 )
 
 func TestParserParse(t *testing.T) {
-	parser := NewParser(baseURL, &http.Client{})
+	parser := NewParser(URL, &http.Client{})
 
 	tables := []struct {
 		date     time.Time

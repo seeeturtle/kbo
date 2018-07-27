@@ -10,19 +10,19 @@ import (
 )
 
 const (
-	baseURL = "https://sports.news.naver.com/kbaseball/schedule/index.nhn"
+	URL = "https://sports.news.naver.com/kbaseball/schedule/index.nhn"
 )
 
 type Parser struct {
 	client *http.Client
-	URL    string
+	url    string
 }
 
 // NewParser는 초기화된 Parser의 포인터를 반환합니다.
 func NewParser(url string, client *http.Client) *Parser {
 	return &Parser{
 		client: client,
-		URL:    url,
+		url:    url,
 	}
 }
 
@@ -45,7 +45,7 @@ func (p *Parser) Parse(t time.Time) ([]Game, error) {
 }
 
 func (p *Parser) request(month, year int) (*http.Response, error) {
-	req, err := http.NewRequest("GET", p.URL, nil)
+	req, err := http.NewRequest("GET", p.url, nil)
 	if err != nil {
 		return nil, err
 	}
