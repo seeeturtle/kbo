@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"log"
 	"os"
 	"strconv"
@@ -25,27 +24,7 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, os.Interrupt)
 
-	var (
-		logName string
-		logFile *os.File
-		port    string
-		err     error
-	)
-
-	flag.StringVar(&logName, "log", "kbo-api.log", "file name to log")
-	flag.Parse()
-
-	logFile, err = os.OpenFile(logName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer func() {
-		if err := logFile.Close(); err != nil {
-			log.Fatal(err)
-		}
-	}()
-
-	logger = log.New(logFile, "kbo-api: ", log.LstdFlags|log.Lshortfile)
+	logger = log.New(os.Stdout, "kbo-api: ", log.LstdFlags|log.Lshortfile)
 
 	r := mux.NewRouter()
 	r.HandleFunc("/game", GameHandler).

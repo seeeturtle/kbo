@@ -22,12 +22,7 @@ $ dep ensure
 ## 실행
 
 ```
-$ kbo-api -help
-Usage of kbo-api:
-  -log string
-        file name to log (default "kbo-api.log")
-  -port string
-        port to listen (default "8080")
+$ kbo-api
 ```
 
 ## 예제
