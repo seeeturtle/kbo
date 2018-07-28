@@ -14,6 +14,11 @@ $ go get github.com/seeeturtle/kbo/...
 $ go get github.com/seeeturtle/kbo
 ```
 
+그 다음에 의존성을 설치를 해주세요
+```
+$ dep ensure
+```
+
 ## 실행
 
 ```
