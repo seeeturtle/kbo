@@ -36,7 +36,7 @@ func main() {
 	flag.StringVar(&port, "port", "8080", "port to listen")
 	flag.Parse()
 
-	logFile, err = os.OpenFile(logDir, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0600)
+	logFile, err = os.OpenFile(logName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatalf("cannot open file.\nmessage:\n%s\n", err)
 	}
