@@ -45,3 +45,9 @@ func main() {
     fmt.Println(games)
 }
 ```
+
+## API
+
+```
+$ curl 'https://kbo-api.herokuapp.com?year=2018&month=7&day=27'
+```
