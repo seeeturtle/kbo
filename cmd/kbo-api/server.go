@@ -33,7 +33,6 @@ func main() {
 	)
 
 	flag.StringVar(&logName, "log", "kbo-api.log", "file name to log")
-	flag.StringVar(&port, "port", "8080", "port to listen")
 	flag.Parse()
 
 	logFile, err = os.OpenFile(logName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -57,11 +56,11 @@ func main() {
 
 	server := &http.Server{
 		Handler: r,
-		Addr:    "127.0.0.1:" + port,
+		Addr:    ":" + os.Getenv("PORT"), // https://devcenter.heroku.com/articles/dynos#local-environment-variables
 	}
 
 	go func() {
-		logger.Printf("listening on http://0.0.0.0:%s\n", port)
+		logger.Printf("listening on %s\n", os.Getenv("PORT"))
 
 		if err := server.ListenAndServe(); err != nil {
 			logger.Fatal(err)
