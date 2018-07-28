@@ -1,3 +1,8 @@
+[metadata.heroku]
+  root-package = "github.com/seeeturtle/kbo"
+  go-version = "1.8.3"
+  install = [ "./..." ]
+
 [[constraint]]
   name = "github.com/PuerkitoBio/goquery"
   version = "1.4.1"
