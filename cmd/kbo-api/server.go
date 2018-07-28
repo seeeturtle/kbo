@@ -38,9 +38,13 @@ func main() {
 
 	logFile, err = os.OpenFile(logName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatalf("cannot open file.\nmessage:\n%s\n", err)
+		log.Fatal(err)
 	}
-	defer logFile.Close()
+	defer func() {
+		if err := logFile.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	logger = log.New(logFile, "kbo-api: ", log.LstdFlags|log.Lshortfile)
 
