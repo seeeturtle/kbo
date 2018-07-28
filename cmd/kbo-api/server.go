@@ -26,13 +26,13 @@ func main() {
 	signal.Notify(stop, os.Interrupt)
 
 	var (
-		logDir  string
+		logName string
 		logFile *os.File
 		port    string
 		err     error
 	)
 
-	flag.StringVar(&logDir, "log", "kbo-api.log", "the file directory to log")
+	flag.StringVar(&logName, "log", "kbo-api.log", "file name to log")
 	flag.StringVar(&port, "port", "8080", "port to listen")
 	flag.Parse()
 
