@@ -27,7 +27,7 @@ func main() {
 	logger = log.New(os.Stdout, "kbo-api: ", log.LstdFlags|log.Lshortfile)
 
 	r := mux.NewRouter()
-	r.HandleFunc("/game", GameHandler).
+	r.HandleFunc("/", GameHandler).
 		Methods("GET").
 		Queries("year", "{year}").
 		Queries("month", "{month}").
