@@ -12,6 +12,8 @@ import (
 
 	"os/signal"
 
+	"flag"
+
 	"github.com/gorilla/mux"
 	"github.com/seeeturtle/kbo"
 )
@@ -21,6 +23,13 @@ var (
 )
 
 func main() {
+	var (
+		addr string
+	)
+	flag.StringVar(&addr, "addr", "0.0.0.0:8080", "address to listen")
+
+	flag.Parse()
+
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, os.Interrupt)
 
@@ -35,7 +44,7 @@ func main() {
 
 	server := &http.Server{
 		Handler: r,
-		Addr:    ":" + os.Getenv("PORT"), // https://devcenter.heroku.com/articles/dynos#local-environment-variables
+		Addr:    addr,
 	}
 
 	go func() {

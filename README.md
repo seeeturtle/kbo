@@ -22,7 +22,7 @@ $ dep ensure
 ## 실행
 
 ```
-$ kbo-api
+$ kbo-api [-addr=HOST:PORT]
 ```
 
 ## 예제
